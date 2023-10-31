@@ -24,14 +24,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: classmoa-backend-app
+  name: classmoa-backend-svc
   namespace: default
   annotations:
     alb.ingress.kubernetes.io/healthcheck-path: "/contents/aws"
 spec:
   selector:
     app: classmoa-backend-app
-  type: NodePort
+  type: ClusterIP
   ports:
     - port: 8080
       targetPort: 8080

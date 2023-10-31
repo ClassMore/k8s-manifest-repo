@@ -26,12 +26,12 @@ kind: Service
 metadata:
   name: classmoa-front-svc
   namespace: default
-#  annotations:
-#    alb.ingress.kubernetes.io/healthcheck-path: "/"
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: "/"
 spec:
   selector:
     app: classmoa-front-app
-  type: NodePort
+  type: ClusterIP
   ports:
     - port: 80 # 서비스가 생성할 포트
       targetPort: 80 # 서비스가 접근할 pod의 포트
