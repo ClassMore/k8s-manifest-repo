@@ -7,6 +7,9 @@ images:
 - name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa
   newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa
   newTag: "1.1"
+- name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa-back
+  newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa-back
+  newTag: "18.1"
 - name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa-front
   newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa-front
   newTag: "30.1"
