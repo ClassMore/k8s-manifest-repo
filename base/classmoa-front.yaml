@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: classmoa-front-app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: classmoa-front-app
+  template:
+    metadata:
+      labels:
+        app: classmoa-front-app
+    spec:
+      containers:
+        - name: classmoa-front-app
+          image: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/frontend-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              name: front-container
+      nodeSelector:
+          key : webWorker
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: classmoa-front-svc
+  namespace: defauult
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: "/"
+spec:
+  selector:
+    app: classmoa-front-svc
+  type: NodePort
+  ports:
+    - port: 80 # 서비스가 생성할 포트
+      targetPort: 80 # 서비스가 접근할 pod의 포트
+      protocol: TCP

@@ -1,21 +1,14 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: classmoa-front-app
-  namespace: default
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: classmoa-front-app
-  template:
-    metadata:
-      labels:
-        app: classmoa-front-app
-    spec:
-      containers:
-        - name: classmoa-front-app
-          image: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/front-app:latest
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 3000
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+images:
+  - name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/alarm-app
+    newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/alarm-app
+    newTag: "1.1"
+  - name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa
+    newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa
+    newTag: "1.1"
+  - name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/front-app
+    newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/front-app
+    newTag: "1.1"
+resources:
+  - ../../base
