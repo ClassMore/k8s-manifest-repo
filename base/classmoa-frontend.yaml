@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: front
-  name: classmoa-front-app
+  name: front-deploy
   namespace: default
 spec:
   replicas: 1
@@ -22,7 +22,6 @@ spec:
           ports:
             - containerPort: 80
               name: front-container
----
 ---
 apiVersion: v1
 kind: Service
