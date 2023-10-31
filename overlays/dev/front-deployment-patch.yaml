@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: classmoa-front-app
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: classmoa-front-app
+  template:
+    metadata:
+      labels:
+        app: classmoa-front-app
+    spec:
+      containers:
+        - name: classmoa-front-app
+          image: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/front-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
