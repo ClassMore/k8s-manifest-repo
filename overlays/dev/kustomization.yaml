@@ -6,7 +6,7 @@ images:
   newTag: "1.1"
 - name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa
   newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa
-  newTag: "1.1"
+  newTag: 3fb021ff
 - name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/frontend-app
   newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/frontend-app
   newTag: 37f8904a
