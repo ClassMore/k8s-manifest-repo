@@ -1,38 +1,58 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app: front
   name: classmoa-front-app
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: classmoa-front-app
+      app: front
   template:
     metadata:
       labels:
-        app: classmoa-front-app
+        app: front
     spec:
       containers:
-        - name: classmoa-front-app
+        - name: front
           image: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/frontend-app:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
               name: front-container
 ---
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: classmoa-front-svc
+  labels:
+    app: front
+  name: front-svc
   namespace: default
-  annotations:
-    alb.ingress.kubernetes.io/healthcheck-path: "/"
 spec:
-  selector:
-    app: classmoa-front-app
   type: ClusterIP
   ports:
-    - port: 80 # 서비스가 생성할 포트
-      targetPort: 80 # 서비스가 접근할 pod의 포트
-      protocol: TCP
+    - protocol: TCP
+      targetPort: 80
+      port: 80
+      name: front
+  selector:
+    app: front
+
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: classmoa-front-svc
+#  namespace: default
+#  annotations:
+#    alb.ingress.kubernetes.io/healthcheck-path: "/"
+#spec:
+#  selector:
+#    app: classmoa-front-app
+#  type: ClusterIP
+#  ports:
+#    - port: 80 # 서비스가 생성할 포트
+#      targetPort: 80 # 서비스가 접근할 pod의 포트
+#      protocol: TCP
