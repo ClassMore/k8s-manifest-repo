@@ -7,17 +7,8 @@ images:
 - name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa
   newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa
   newTag: "1.1"
-- name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa-alarm
-  newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa-alarm
-  newTag: "15.1"
-- name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa-back
-  newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa-back
-  newTag: "18.1"
-- name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa-front
-  newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa-front
-  newTag: "30.1"
-- name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/front-app
-  newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/front-app
+- name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/frontend-app
+  newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/frontend-app
   newTag: "1.1"
 resources:
 - ../../base
