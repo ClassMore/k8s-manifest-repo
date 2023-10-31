@@ -7,14 +7,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: classmoa-backend-app
+      app: classmoa-alarm-app
   template:
     metadata:
       labels:
-        app: classmoa-backend-app
+        app: classmoa-alarm-app
     spec:
       containers:
-        - name: classmoa-backend-app
+        - name: classmoa-alarm-app
           image: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/alarm-app:latest
           imagePullPolicy: Always
           ports:
@@ -26,7 +26,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: classmoa-backend-app
+  name: classmoa-alarm-app
   annotations:
     alb.ingress.kubernetes.io/healthcheck-path: "/contents/aws"
 spec:
