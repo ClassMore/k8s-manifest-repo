@@ -2,43 +2,45 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: front
-  name: front-deploy
+    app: classmoa-front-app
+  name: classmoa-front-app
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: front
+      app: classmoa-front-app
   template:
     metadata:
       labels:
-        app: front
+        app: classmoa-front-app
     spec:
       containers:
-        - name: front
+        - name: classmoa-front-app
           image: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/frontend-app:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
-              name: front-container
+              name: classmoa-front-app
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: front
-  name: front-svc
+    app: classmoa-front-svc
+  name: classmoa-front-svc
   namespace: default
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: "/"
 spec:
   type: ClusterIP
   ports:
     - protocol: TCP
       targetPort: 80
       port: 80
-      name: front
+      name: classmoa-front-svc
   selector:
-    app: front
+    app: classmoa-front-app
 
 #apiVersion: v1
 #kind: Service
