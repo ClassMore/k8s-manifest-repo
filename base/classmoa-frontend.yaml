@@ -21,7 +21,7 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
-              name: classmoa-front-app
+              name: front-container
 ---
 apiVersion: v1
 kind: Service
