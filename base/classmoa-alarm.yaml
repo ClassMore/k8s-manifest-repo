@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: alarm-app
-          image: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/backend-app/alarm-app:latest
+          image: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/alarm-app:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
