@@ -1,38 +1,67 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: classmoa-backend-app
+  name: backend-app
   namespace: default
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: classmoa-backend-app
+      app: backend-app
   template:
     metadata:
       labels:
-        app: classmoa-backend-app
+        app: backend-app
     spec:
       containers:
-        - name: classmoa-backend-app
-          image: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/classmoa:latest
+        - name: backend-app
+          image: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/backend-app:1cdedde4
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
-              name: back-container
+          env:
+            - name: jdbcUrl
+              value: jdbc:mariadb://crawling-server.c4y9vm1irfhh.ap-northeast-2.rds.amazonaws.com:3306/classmoa
+            - name: username
+              valueFrom:
+                secretKeyRef:
+                  name: rds-db-password
+                  key: username
+            - name: password
+              valueFrom:
+                secretKeyRef:
+                  name: rds-db-password
+                  key: password
+            - name: org.mariadb.jdbc.Driver
+              value: org.mariadb.jdbc.Driver
+            - name: gmail
+              valueFrom:
+                secretKeyRef:
+                  name: mail-password
+                  key: gmail
+            - name: gmailPassword
+              valueFrom:
+                secretKeyRef:
+                  name: mail-password
+                  key: gmailPassword
+            - name: redisPassword
+              valueFrom:
+                secretKeyRef:
+                  name: redis-password
+                  key: redisPassword
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: classmoa-backend-svc
-  namespace: default
+  name: backend-svc
   annotations:
-    alb.ingress.kubernetes.io/healthcheck-path: "/contents/aws"
+  # alb.ingress.kubernetes.io/healthcheck-path: "/contents/"
 spec:
   selector:
-    app: classmoa-backend-app
-  type: ClusterIP
+    app: backend-app
+  type: NodePort
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 8080 # 서비스가 생성할 포트
+      targetPort: 8080 # 서비스가 접근할 pod의 포트
       protocol: TCP
+      nodePort: 30001
