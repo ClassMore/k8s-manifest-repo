@@ -19,6 +19,31 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
+          env:
+            - name: jdbcUrl
+              value: jdbc:mariadb://crawling-server.c4y9vm1irfhh.ap-northeast-2.rds.amazonaws.com:3306/classmoa
+            - name: username
+              valueFrom:
+                secretKeyRef:
+                  name: rds-db-password
+                  key: username
+            - name: password
+              valueFrom:
+                secretKeyRef:
+                  name: rds-db-password
+                  key: password
+            - name: org.mariadb.jdbc.Driver
+              value: org.mariadb.jdbc.Driver
+            - name: gmail
+              valueFrom:
+                secretKeyRef:
+                  name: mail-password
+                  key: gmail
+            - name: gmailPassword
+              valueFrom:
+                secretKeyRef:
+                  name: mail-password
+                  key: gmailPassword
 ---
 apiVersion: v1
 kind: Service
