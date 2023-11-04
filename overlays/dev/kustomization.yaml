@@ -3,7 +3,7 @@ kind: Kustomization
 images:
 - name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/alarm-app
   newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/alarm-app
-  newTag: 37e4bdff
+  newTag: 2637da5d
 - name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/backend-app
   newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/backend-app
   newTag: 932d680f
