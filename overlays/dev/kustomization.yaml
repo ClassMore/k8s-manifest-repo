@@ -9,6 +9,6 @@ images:
   newTag: 27f940e5
 - name: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/frontend-app
   newName: 087605768816.dkr.ecr.ap-northeast-2.amazonaws.com/frontend-app
-  newTag: fa1b0c27
+  newTag: f1fa4e8d
 resources:
 - ../../base
